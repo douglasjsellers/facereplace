@@ -8,9 +8,10 @@
 
 import UIKit
 
-class FaceReplaceViewController: UIViewController
+class FaceReplaceViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     @IBOutlet weak var mainImage: UIImageView!
+    var imagePicker = UIImagePickerController()
 
     override func viewDidLoad()
     {
@@ -20,10 +21,26 @@ class FaceReplaceViewController: UIViewController
     
 
 
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func chooseImageToUpload(sender: AnyObject)
+    {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum)
+        {
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
+            imagePicker.allowsEditing = false
+            
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+        
+
     }
     
     func findFaceInBaseImage()
@@ -41,6 +58,10 @@ class FaceReplaceViewController: UIViewController
         }
     }
     
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
+    {
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in})        
+    }
 
 
 }

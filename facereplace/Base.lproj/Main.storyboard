@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Face Replace View Controller-->
@@ -18,20 +19,77 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_1" translatesAutoresizingMaskIntoConstraints="NO" id="TqO-Ke-0NI">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
-                                </variation>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReR-oi-lwB">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.28617459584441296" green="1" blue="0.59367181529291924" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Upload Image">
+                                    <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="chooseImageToUpload:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="XtI-Pa-O3l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TqO-Ke-0NI" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="449-fQ-32G"/>
+                            <constraint firstItem="ReR-oi-lwB" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="83" id="6rN-Wb-eHl"/>
+                            <constraint firstAttribute="centerY" secondItem="TqO-Ke-0NI" secondAttribute="centerY" id="Anh-v7-lyB"/>
+                            <constraint firstItem="TqO-Ke-0NI" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="IhH-lP-B4m"/>
+                            <constraint firstAttribute="centerX" secondItem="TqO-Ke-0NI" secondAttribute="centerX" id="JR6-MS-luV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ReR-oi-lwB" secondAttribute="trailing" constant="51" id="NwU-hR-jNg"/>
+                            <constraint firstAttribute="centerX" secondItem="ReR-oi-lwB" secondAttribute="centerX" constant="-16" id="TRw-hm-f1b"/>
+                            <constraint firstItem="TqO-Ke-0NI" firstAttribute="bottom" secondItem="ReR-oi-lwB" secondAttribute="bottom" constant="34" id="Udo-f0-8yh"/>
+                            <constraint firstItem="TqO-Ke-0NI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Zen-i1-eox"/>
+                            <constraint firstItem="TqO-Ke-0NI" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="aM4-5T-nS8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TqO-Ke-0NI" secondAttribute="trailing" constant="-16" id="hkY-GH-TVA"/>
+                            <constraint firstItem="TqO-Ke-0NI" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" id="qTX-kR-tfF"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="TqO-Ke-0NI"/>
+                                <exclude reference="ReR-oi-lwB"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="449-fQ-32G"/>
+                                <exclude reference="Anh-v7-lyB"/>
+                                <exclude reference="IhH-lP-B4m"/>
+                                <exclude reference="JR6-MS-luV"/>
+                                <exclude reference="Udo-f0-8yh"/>
+                                <exclude reference="Zen-i1-eox"/>
+                                <exclude reference="aM4-5T-nS8"/>
+                                <exclude reference="hkY-GH-TVA"/>
+                                <exclude reference="qTX-kR-tfF"/>
+                                <exclude reference="6rN-Wb-eHl"/>
+                                <exclude reference="NwU-hR-jNg"/>
+                                <exclude reference="TRw-hm-f1b"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="TqO-Ke-0NI"/>
+                                <include reference="ReR-oi-lwB"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="449-fQ-32G"/>
+                                <include reference="Anh-v7-lyB"/>
+                                <include reference="IhH-lP-B4m"/>
+                                <include reference="JR6-MS-luV"/>
+                                <include reference="Udo-f0-8yh"/>
+                                <include reference="Zen-i1-eox"/>
+                                <include reference="aM4-5T-nS8"/>
+                                <include reference="hkY-GH-TVA"/>
+                                <include reference="qTX-kR-tfF"/>
+                                <include reference="6rN-Wb-eHl"/>
+                                <include reference="NwU-hR-jNg"/>
+                                <include reference="TRw-hm-f1b"/>
                             </mask>
                         </variation>
                     </view>
