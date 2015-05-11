@@ -16,11 +16,19 @@ class FaceReplaceViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        findFaceInBaseImage()
+        printLocationOfPicturesDirectory()
+        findFaceInBaseImage( mainImage.image!)
     }
     
 
 
+    func printLocationOfPicturesDirectory()
+    {
+        #if arch(i386) || arch(x86_64)
+            let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! NSString
+            NSLog("Document Path: %@", documentsPath)
+        #endif
+    }
     
     override func didReceiveMemoryWarning()
     {
@@ -43,11 +51,12 @@ class FaceReplaceViewController: UIViewController, UIImagePickerControllerDelega
 
     }
     
-    func findFaceInBaseImage()
+    func findFaceInBaseImage(image:UIImage)
     {
+        let ciImage:CIImage = CIImage(image: image)
         let context:CIContext = CIContext(options:nil)
         let detector:CIDetector = CIDetector(ofType: CIDetectorTypeFace, context: context, options: [CIDetectorAccuracy : CIDetectorAccuracyHigh])
-        let features:NSArray = [detector.featuresInImage(CIImage(image: mainImage.image))]
+        let features:NSArray = [detector.featuresInImage(ciImage)]
         for subArray in features
         {
             for f in subArray as! NSArray
@@ -60,7 +69,10 @@ class FaceReplaceViewController: UIViewController, UIImagePickerControllerDelega
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
     {
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in})        
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in})
+        let image : UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage;
+        self.findFaceInBaseImage(image)
+
     }
 
 
